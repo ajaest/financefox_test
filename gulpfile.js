@@ -2,7 +2,6 @@ var gulp    = require('gulp'        ),
     connect = require('gulp-connect'),
     coffee  = require('gulp-coffee' ),
     less    = require('gulp-less'   ),
-    gutil   = require('gulp-util'   ),
     path    = require('path'        ),
     del     = require('del'         )
 ;
@@ -105,7 +104,9 @@ gulp.task('compile-assets', ['clean-assets'], function() {
         // receiver and configure error output
         .pipe(
             coffee({bare: true})
-            .on('error', gutil.log)
+            .on('error', function (err){
+                console.error(err.stack);
+            })
         )
         // The results piped from the coffee
         // compiler are passed to the gulp file
