@@ -1,0 +1,7 @@
+bower_components/
+node_modules/
+public/js
+public/templates/
+public/styles
+public/bower_components/
+*.swp
