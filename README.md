@@ -1,6 +1,13 @@
 # Fox Finance test
 
-## Steps
+## Install
+
+You have to have both npm and bower install. Then, just run `npm install` to install all dependencies.
+
+To run the development server, just run `gulp`.
+
+
+## Actions taken in this project (chronologically)
 
 - Initial commit in `master`.
 - Create a branch to adapt [chaplin-boilerplate][https://github.com/chaplinjs/chaplin-boilerplate] `master` branch
