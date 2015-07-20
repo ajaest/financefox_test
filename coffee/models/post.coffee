@@ -31,7 +31,7 @@ define [
                 ln_splitted_content =  data.content.split(/\n|\r\n/)
                 html_content = ''
                 html_content += '<p>' +  paragraph + '</p>' for paragraph in ln_splitted_content
-                data.content = html_content
+                data.par_content = html_content
                 
             super(data,conf) 
         

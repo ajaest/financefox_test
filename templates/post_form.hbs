@@ -3,10 +3,12 @@
 <form id="post-form">
     
     <fieldset>
-        <label for="title">Title<label>
+        <legend>Content</legend>
+        
+        <label for="title">Title</label>
         <input id="title" type="text" value="{{title}}"/>
         
-        <label for="content">Content<label>
+        <label for="content">Content</label>
         <textarea id="content" name="content" >{{content}}</textarea>
     </fieldset>
 
@@ -24,19 +26,24 @@
     <fieldset>
         <legend>Location</legend>
         
+        <img id="map_snapshot" src="{{map_url}}" />
+        
         <label for="lat">Latitude</label>
         <input type="number" step="any" id="lat" name="lat" max="90" min="-90" value="{{lat}}" />
         
         <label for="long">Longitude</label>
         <input type="number" step="any" id="long" name="lon" max="180" min="-180" value="{{long}}" />
         
-        <img id="map_snapshot" src="{{map_url}}" />
+        <fieldset id="save-block" >
+            <input id="save_button" type="submit" value="Save" onclick="return false;">
+            <output id="errors"  style="display: none"></output>
+            <output id="success" style="display: none">
+                Updated correctly, redirecting to post...
+            </output>
+        </fieldset>
+        
     </fieldset>
     
     
-    <input id="save_button" type="submit" value="Save" onclick="return false;">
-    <output id="errors"  style="display: none"></output>
-    <output id="success" style="display: none">
-        Updated correctly, redirecting to post...
-    </output>
+    
 </form>

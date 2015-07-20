@@ -52,7 +52,7 @@ define [
             @success_msg.focus()
             
             after_show_message = () ->
-                window.location = '#/posts/' + obj.attributes.id    
+                window.location = '#/posts/' + ((obj and obj.attributes.id) or @model.id)    
             
             setTimeout after_show_message.bind(@), 1000
         
