@@ -1,14 +1,15 @@
 define [
     'views/base/collection-view'
-    'text!/templates/posts.hbs'
-    'views/post'
-], (CollectionView, template, PostView) -> 
+    'views/post-item'
+], (
+    CollectionView, 
+    PostItemView
+) -> 
     
     class PostCollectionView extends CollectionView
         
-        itemView: PostView
-    
+        itemView: PostItemView
+        
+        tagName: 'ol'
+        
         autoRender: true
-                
-        template: template
-        template = null

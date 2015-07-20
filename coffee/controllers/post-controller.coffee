@@ -10,8 +10,8 @@ define [
     
     class PostController extends BaseController
                 
-        detail: ->
-            @model = new Post()
+        detail: (params) ->
+            @model = new Post(id: params.id)
             @view  = new PostView 
                 model: @model
                 region: 'main'

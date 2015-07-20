@@ -27,6 +27,12 @@ To run the development server, just run `gulp`.
                 - Copy bower_components to the public folder
                 - Task to clean assets
 
+- Create the default route '/' to show the post list view using the controller entry point 'list'
+- Create the detail/read route '/post/:id' to show more information about a post, using:
+    - Google static maps API to pinpoint latitude/longitude in a map
+    - moment.js to obtain human readable dates
+
+
 ## Used articles and resources
 
 - [Gulp - Getting started][http://code.tutsplus.com/tutorials/gulp-as-a-development-web-server--cms-20903]
