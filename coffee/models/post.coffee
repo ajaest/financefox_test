@@ -27,7 +27,12 @@ define [
                 data.created_at_human = data.created_at.calendar()
                 
                 data.map_url = utils.consctruct_gmap_url(data.lat, data.long)
-            
+                
+                ln_splitted_content =  data.content.split(/\n|\r\n/)
+                html_content = ''
+                html_content += '<p>' +  paragraph + '</p>' for paragraph in ln_splitted_content
+                data.content = html_content
+                
             super(data,conf) 
         
         toJSON: (opts) ->

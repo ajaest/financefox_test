@@ -1,4 +1,14 @@
 
+.cover-image(){
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 a, a:visited{
     color: inherit;
     text-decoration: none;
@@ -24,6 +34,27 @@ body{
     background-color: white;
 }
 
+@main-menu-heigth: 80px;
+
+#top-link{
+    
+    position: relative;
+    top: -@main-menu-heigth;
+    margin-bottom: -80px;
+    left: 0;
+    height: @main-menu-heigth;
+    width: 3em;
+    overflow: hidden;
+    background-color: #cd6a51;
+    display: block;
+    text-indent: -99em;
+    background-image: url('/images/left-arrow.png');
+    background-size: auto @main-menu-heigth - 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+
 #main-menu{
     background-color: rgb(26, 26, 26);
     color: #27a7df;
@@ -33,12 +64,14 @@ body{
     
     display: block;
     width: 100%;
-    height: 80px;
+    height: @main-menu-heigth;
+    
+    position: relative;
     
     >a,>h1 {
         display: block;
-        height: 80px;
-        line-height: 80px; 
+        height: @main-menu-heigth;
+        line-height: @main-menu-heigth; 
         padding-left: 0.5em;
         padding-right: 0.5em;
         
@@ -47,6 +80,7 @@ body{
     
     >h1{
         float: left;
+        padding-left: 2em;
     }
     
     >a{
@@ -81,13 +115,7 @@ body{
                 height: @height;
                 width: @height;
                 
-                background-repeat: no-repeat;
-                background-position: center;
-                
-                -webkit-background-size: cover;
-                -moz-background-size: cover;
-                -o-background-size: cover;
-                background-size: cover;
+                .cover-image;
             }
             
             >h2{
@@ -106,3 +134,67 @@ body{
         }
     }
 }
+
+.post{
+    padding: 20px;
+    
+    >h1{
+        font-size: 250%;
+        border-bottom: 2px solid rgb(26, 26, 26);
+    }
+    
+    @image-width: 600px;
+    @image-height: 400px;
+    
+    >.image{
+        height: @image-height;
+        width: @image-width;
+        
+        float:left;
+        
+        .cover-image;
+    }
+    
+    @info-width: @body-width - @image-width - 40px;
+    
+    >.info{
+        width: @info-width;
+        height: @image-height;
+        float: right;
+        
+        >img{
+            float: left;
+            width: @info-width;
+            height: @info-width;
+        }
+        
+        @lines-height: (@image-height -  @info-width) /3;
+        
+        >a,>span{
+            display: block;
+            float: left;
+            width: 100%;
+            height: @lines-height;
+            line-height: @lines-height;
+            
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        >a{
+            width: 50%;
+            
+            
+            background-color: #cd6a51;
+            color: white;
+        }
+        
+    }
+    
+    >.content{
+        padding-top: 10px;
+        clear: both;
+        text-align: justify;
+    }
+}
+
