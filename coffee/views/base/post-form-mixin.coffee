@@ -45,14 +45,14 @@ define [
             
             'click #save_button' : 'save'
         
-        onSaveSuccess : ()->
+        onSaveSuccess : (obj)->
                 
             @error_msg  .css('display', 'none'   )
             @success_msg.css('display', 'inline' )
             @success_msg.focus()
             
             after_show_message = () ->
-                window.location = '#/posts/' + @getModel().id    
+                window.location = '#/posts/' + obj.attributes.id    
             
             setTimeout after_show_message.bind(@), 1000
         

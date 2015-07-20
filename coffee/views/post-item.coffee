@@ -6,6 +6,10 @@ define [
     class PostDetailView extends View
         autoRender: true
         
+        tagName: 'li'
+        
+        className: 'post-summary'
+        
         template: template
         template = null 
         

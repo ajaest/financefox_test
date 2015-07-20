@@ -12,4 +12,6 @@ define [
         
         tagName: 'ol'
         
+        className: 'post-summary-list'
+        
         autoRender: true

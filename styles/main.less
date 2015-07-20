@@ -1,1 +1,108 @@
 
+a, a:visited{
+    color: inherit;
+    text-decoration: none;
+}
+
+h1,h2,h3,h4,h5{
+    padding:0;
+    margin: 0;
+}
+
+html{
+    background-color: rgb(242, 242, 242)
+}
+
+@golden-ratio: 1.61803398875;
+
+@body-width: 960px;
+
+body{
+    font-family: sans-serif;
+    margin: auto;
+    width: @body-width;
+    background-color: white;
+}
+
+#main-menu{
+    background-color: rgb(26, 26, 26);
+    color: #27a7df;
+    font-weight: bold;
+    font-size: 120%;
+    box-sizing: border-box;
+    
+    display: block;
+    width: 100%;
+    height: 80px;
+    
+    >a,>h1 {
+        display: block;
+        height: 80px;
+        line-height: 80px; 
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        
+        
+    }
+    
+    >h1{
+        float: left;
+    }
+    
+    >a{
+        float: right;   
+        color: white;
+        background-color: #cd6a51;
+    }
+}
+
+.post-summary-list{
+    list-style: none;
+    margin: 0;
+    padding:0;
+    
+    li{
+        @height: @body-width / @golden-ratio / 4;
+        
+        width: 100%;
+        height: @height;
+        line-height: @height;
+        font-size: @height/6;
+        
+        >a{
+            display: block;
+            width: 100%;
+            height: 100%;
+            
+            >.standing-image{
+                display: block;
+                float: left;
+                
+                height: @height;
+                width: @height;
+                
+                background-repeat: no-repeat;
+                background-position: center;
+                
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+            
+            >h2{
+                box-sizing: border-box;
+                
+                height: @height;
+                width: @body-width - @height - 2em;
+                
+                padding-left: 1em;
+                padding-right: 1em;
+                
+                display: block;
+                float: left;
+            }
+            
+        }
+    }
+}
