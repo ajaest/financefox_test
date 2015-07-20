@@ -6,6 +6,7 @@ define [
     'views/post-list'
     'views/site-view'
     'views/post-edit'
+    'views/post-create'
 ], (
     BaseController, 
     Post          , 
@@ -13,12 +14,24 @@ define [
     PostView      , 
     PostListView  , 
     SiteView      ,
-    PostEditView
+    PostEditView  ,
+    PostCreateView
 ) -> 
     'use strict'
     
     class PostController extends BaseController
+        
+        redirect_home: () ->
+            window.location = '#/'
+        
+        new: ->
+            @collection = new PostList()
+            @view       = new PostCreateView 
+                collection: @collection, 
+                region    : 'main'
                 
+            @view.render
+             
         edit: (params) ->
             @model = new Post(id: params.id)
             @view  = new PostEditView 

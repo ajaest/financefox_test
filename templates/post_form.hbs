@@ -1,9 +1,4 @@
-<a href="#/posts/{{id}}">Go back</a>
-
-<output id="errors"  style="height: 0;"></output>
-<output id="success" style="height: 0;">
-    Updated correctly, redirecting to post...
-</output>
+<a id="go-back-anchor" href="#/posts/{{id}}"></a>
 
 <form id="post-form">
     
@@ -40,4 +35,8 @@
     
     
     <input id="save_button" type="submit" value="Save" onclick="return false;">
+    <output id="errors"  style="display: none"></output>
+    <output id="success" style="display: none">
+        Updated correctly, redirecting to post...
+    </output>
 </form>

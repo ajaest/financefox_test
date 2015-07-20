@@ -1,10 +1,13 @@
+<a href="#/">Go back</a>
 
 <article class="post">
     <h1 class="title" >{{title}}</h1>
+    
     <a href="#/posts/{{id}}/edit">Edit</a>
+    <a href="javascript:void(0)" id="remove-post">Remove post</a>
         
-    Created <time datetime="{{created_at}}" class="created_at">{{created_at_human}}</datetime>
-    Updated <time datetime="{{updated_at}}" class="updated_at">{{updated_at_human}}</datetime>
+    Created <time datetime="{{created_at}}" class="created_at">{{created_at_human}}</time>
+    Updated <time datetime="{{updated_at}}" class="updated_at">{{updated_at_human}}</time>
 
     <img class="map" src="{{map_url}}"/>
     <img class="image" src="{{image_url}}"/>

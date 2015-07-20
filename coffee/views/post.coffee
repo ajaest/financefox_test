@@ -9,3 +9,21 @@ define [
         template: template
         template = null 
         
+        events : 
+            'click #remove-post' : 'removePost'
+        
+        
+        removePost: () ->
+            doRemove = window.confirm(
+                'If you click OK, you will remove this post.' +
+                ' Are you sure?'
+            )
+            
+            if doRemove
+                @model.destroy
+                    success: () ->
+                        window.location = '#/'
+                    error: (err) ->
+                        window.alert(err)
+                
+            

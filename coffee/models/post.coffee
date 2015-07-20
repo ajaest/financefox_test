@@ -1,7 +1,8 @@
 define [
   'models/base/model'
   'moment'
-], (Model, moment) ->
+  'lib/utils'
+], (Model, moment, utils) ->
     'use strict'
 
     class Post extends Model
@@ -16,16 +17,7 @@ define [
         urlRoot: 
             "https://challenge-api-larce.herokuapp.com/posts/"
         
-        consctruct_gmap_url: (lat, long) ->
-            
-            'https://www.google.com/maps/api/staticmap?'   + 
-            '?key=AIzaSyAHJWwRi7CDMqBUjwfF18GmdphKVzTuZWI' + 
-            '&zoom=14'                                     + 
-            '&size=800x600'                                + 
-            '&maptype=roadmap'                             + 
-            '&markers=color:blue|label:P|'                 +
-            lat + ',' + long
-             
+        
         
         parse: (data,conf) ->
             if data
@@ -34,7 +26,7 @@ define [
                 data.created_at       = moment(data.created_at)
                 data.created_at_human = data.created_at.calendar()
                 
-                data.map_url = @consctruct_gmap_url(data.lat, data.long)
+                data.map_url = utils.consctruct_gmap_url(data.lat, data.long)
             
             super(data,conf) 
         
