@@ -5,11 +5,27 @@ define [
     'views/post'
     'views/post-list'
     'views/site-view'
-], (BaseController, Post, PostList, PostView, PostListView, SiteView) -> 
+    'views/post-edit'
+], (
+    BaseController, 
+    Post          , 
+    PostList      , 
+    PostView      , 
+    PostListView  , 
+    SiteView      ,
+    PostEditView
+) -> 
     'use strict'
     
     class PostController extends BaseController
                 
+        edit: (params) ->
+            @model = new Post(id: params.id)
+            @view  = new PostEditView 
+                model: @model
+                region: 'main'
+            @model.fetch().then @view.render
+        
         detail: (params) ->
             @model = new Post(id: params.id)
             @view  = new PostView 
@@ -23,4 +39,6 @@ define [
                 collection: @collection, 
                 region: 'main'
             @collection.fetch().then @view.render
+            
+        
             

@@ -1,5 +1,43 @@
-<form>
-    <label for="name">Name<label>
+<a href="#/posts/{{id}}">Go back</a>
+
+<output id="errors"  style="height: 0;"></output>
+<output id="success" style="height: 0;">
+    Updated correctly, redirecting to post...
+</output>
+
+<form id="post-form">
+    
+    <fieldset>
+        <label for="title">Title<label>
+        <input id="title" type="text" value="{{title}}"/>
         
-    <input id="name" type="name" value="name"/>
+        <label for="content">Content<label>
+        <textarea id="content" name="content" >{{content}}</textarea>
+    </fieldset>
+
+    
+        
+    <fieldset>
+        <legend>Image</legend>
+        
+        <label for="image_url">Image url</label>
+        <input id="image_url" name="image_url" type="text" value="{{image_url}}"/>
+        
+        <img id="image_snapshot" src="{{image_url}}" />
+    </fieldset>
+    
+    <fieldset>
+        <legend>Location</legend>
+        
+        <label for="lat">Latitude</label>
+        <input type="number" step="any" id="lat" name="lat" max="90" min="-90" value="{{lat}}" />
+        
+        <label for="long">Longitude</label>
+        <input type="number" step="any" id="long" name="lon" max="180" min="-180" value="{{long}}" />
+        
+        <img id="map_snapshot" src="{{map_url}}" />
+    </fieldset>
+    
+    
+    <input id="save_button" type="submit" value="Save" onclick="return false;">
 </form>

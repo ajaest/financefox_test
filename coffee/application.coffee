@@ -8,7 +8,6 @@ define [
   class Application extends Chaplin.Application
     title: 'FinanceFox test APP'
     
-    
     initRouter: (routes, options) ->
         
         options.pushState= false

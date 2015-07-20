@@ -47,7 +47,7 @@ var assets = {
 };
 
 // Task to start a basic reloadable server
-gulp.task('webserver', function() {
+gulp.task('webserver', ['compile-assets'], function() {
     // Subtask webserver starts a simple HTTP 
     // file server
     connect.server({
@@ -75,7 +75,7 @@ gulp.task('clean-assets', function (cb) {
 
 // Task to compile assets
 gulp.task('compile-assets', ['clean-assets'], function() {
-
+    
     gulp
     // LESS compilation
         // Make a glob search of all less files 
@@ -105,6 +105,9 @@ gulp.task('compile-assets', ['clean-assets'], function() {
         .pipe(
             coffee({bare: true})
             .on('error', function (err){
+                if (err.code)
+                    console.error(err.code);
+
                 console.error(err.stack);
             })
         )
@@ -129,17 +132,16 @@ gulp.task('compile-assets', ['clean-assets'], function() {
     ;
 });
 
-gulp.task('watch-changes', function (){
+gulp.task('watch-changes', ['compile-assets'], function (){
    
     var todo = [
-        'clean-assets'  ,
-        'compile-assets'
+        'compile-assets'  ,
     ];
 
     gulp.watch(assets.less      .src, todo);
     gulp.watch(assets.coffee    .src, todo);
     gulp.watch(assets.handlebars.src, todo);
-    gulp.watch(assets.index     .src, todo);
+    // gulp.watch(assets.index     .src, todo);
     
 });
 
@@ -148,8 +150,6 @@ gulp.task('watch-changes', function (){
 // the new ones, continie initializing the 
 // webserver and. finally, activate the watchers.
 gulp.task('default', [
-        'clean-assets'  ,
-        'compile-assets',
-        'webserver'     ,
+        'webserver',
         'watch-changes'
 ]);
