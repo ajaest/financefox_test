@@ -1,4 +1,4 @@
-# Fox Finance test
+# Fox Finance test - a chaplin.js example
 
 ## Install
 
@@ -6,6 +6,9 @@ You have to have both npm and bower install. Then, just run `npm install` to ins
 
 To run the development server, just run `gulp`.
 
+To deploy run `gulp compile-assets` to generate the necessary assets and serve the project folder `public` as the root http resource.
+
+The project is only user-tested in google-chrome, but should work for other browsers.
 
 ## Actions taken in this project (chronologically)
 
@@ -31,6 +34,7 @@ To run the development server, just run `gulp`.
 - Create the detail/read route '/post/:id' to show more information about a post, using:
     - Google static maps API to pinpoint latitude/longitude in a map
     - moment.js to obtain human readable dates
+- Added styles for all views through less
 
 
 ## Used articles and resources
