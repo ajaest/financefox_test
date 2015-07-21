@@ -1,6 +1,5 @@
 var gulp    = require('gulp'        ),
     connect = require('gulp-connect'),
-    coffee  = require('gulp-coffee' ),
     less    = require('gulp-less'   ),
     path    = require('path'        ),
     del     = require('del'         )
@@ -26,9 +25,9 @@ var assets = {
         src_includes: [gulpath('styles/includes/')]
     },
 
-    'coffee' : {
-        src : gulpath('coffee/**/*.coffee'),
-        dst : gulpath('public/js/'        )
+    'js' : {
+        src : gulpath('js/**/*.js'),
+        dst : gulpath('public/js/')
     },
 
     'handlebars': {
@@ -66,7 +65,7 @@ gulp.task('clean-assets', function (cb) {
     
     del([
         assets.less            .dst,
-        assets.coffee          .dst,
+        assets.js              .dst,
         assets.handlebars      .dst,
         assets.bower_components.dst,
     ], cb);
@@ -96,27 +95,9 @@ gulp.task('compile-assets', ['clean-assets'], function() {
     ;
 
     gulp
-    // COFFEE compilation
-        // Make a glob search of all coffee files 
-        // and pipe them to the coffee compiler 
-        .src(assets.coffee.src)
-        // Set the coffee compiler as the pipe 
-        // receiver and configure error output
-        .pipe(
-            coffee({bare: true})
-            .on('error', function (err){
-                if (err.code)
-                    console.error(err.code);
-
-                console.error(err.stack);
-            })
-        )
-        // The results piped from the coffee
-        // compiler are passed to the gulp file
-        // writter in the public folder
-        .pipe(gulp.dest(assets.coffee.dst))        
-        // Reload if a file changes
-        .pipe(connect.reload())
+    // Javascript dependencies
+        .src(assets.js.src)
+        .pipe(gulp.dest(assets.js.dst))
     ;
 
     gulp
@@ -139,7 +120,7 @@ gulp.task('watch-changes', ['compile-assets'], function (){
     ];
 
     gulp.watch(assets.less      .src, todo);
-    gulp.watch(assets.coffee    .src, todo);
+    gulp.watch(assets.js        .src, todo);
     gulp.watch(assets.handlebars.src, todo);
     // gulp.watch(assets.index     .src, todo);
     
